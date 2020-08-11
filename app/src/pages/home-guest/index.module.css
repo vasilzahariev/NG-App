@@ -1,0 +1,23 @@
+.cards {
+    margin-top: 3%;
+    text-align: center;
+}
+
+.signUpLink {
+    display: block;
+    text-decoration: none;
+    border: 1px solid #61dafb;
+    border-radius: 10px;
+    width: 25%;
+    margin: 0 auto;
+    font-size: 1.75rem;
+}
+
+.signUpLink:hover {
+    background-color: #61dafb;
+    transition: all .75s;
+}
+
+b{ 
+    font-size: 1.8rem;
+}

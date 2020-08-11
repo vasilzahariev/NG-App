@@ -1,0 +1,12 @@
+.card {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.123);
+    background-color: rgba(255, 255, 255, 0.027);
+    width: 40%;
+    height: 100px;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 2%;
+    border-radius: 15px;
+    margin: 2%;
+}

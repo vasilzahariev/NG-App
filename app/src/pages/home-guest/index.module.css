@@ -14,10 +14,12 @@
 }
 
 .signUpLink:hover {
-    background-color: #61dafb;
-    transition: all .75s;
+    background-color: #067d9e;
+    border-color: #067d9e;
+    transition: all .5s;
 }
 
 b{ 
     font-size: 1.8rem;
+    /* color: rgb(206, 53, 206); */
 }

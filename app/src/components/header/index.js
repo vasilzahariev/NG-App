@@ -6,8 +6,6 @@ import HeaderLoginRegister from '../header-login-register/';
 class Header extends Component {
     constructor(props) {
         super(props);
-
-        console.log('tes');
     }
 
     render() {

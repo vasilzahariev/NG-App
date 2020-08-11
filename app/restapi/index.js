@@ -3,6 +3,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require('./config/config')[env];
 const express = require('express');
 const mongoose = require('mongoose');
+const authRouter = require('./routes/auth');
 const app = express();
 
 mongoose.connect(config.databaseUrl, {
@@ -20,8 +21,6 @@ mongoose.connect(config.databaseUrl, {
 
 require('./config/express')(app);
 
-app.get('/', (req, res) => {
-    res.status(200).send('Hello there!');
-})
+app.use('/', authRouter);
 
 app.listen(config.PORT, console.log(`Listening on port: ${config.PORT}`));

@@ -1,0 +1,15 @@
+.linkBlock {
+    display: inline-block;
+}
+
+.link {
+    text-decoration: none;
+    color: #61dafb;
+    margin: 20px;
+    font-size: 1.1rem;
+}
+
+.link:hover {
+    color: #067d9e;
+    transition: all .5s;
+}

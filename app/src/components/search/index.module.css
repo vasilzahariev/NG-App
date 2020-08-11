@@ -1,0 +1,28 @@
+.searchDiv {
+    margin: 0 auto;
+    width: 260px;
+}
+
+.searchField {
+    width: 60%;
+    height: 21px;
+    padding-right: 25%;
+    border: 1px solid rgba(255, 255, 255, 0.123);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.123);
+}
+
+.searchSubmit {
+    margin-left: -12%;
+    height: 25px;
+    width: 12%;
+    color: white;
+    border-radius: 10px;
+    -webkit-appearance: none;
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}

@@ -20,8 +20,16 @@ mongoose.connect(config.databaseUrl, {
 
 require('./config/express')(app);
 
-app.get('/', (req, res) => {
-    res.status(200).send('Hello there!');
+app.get('/test', (req, res) => {
+    console.log('test');
+})
+
+app.post('/test', (req, res) => {
+    console.log(req.body);
+
+    res.send({
+        name: 'Pesho'
+    })
 })
 
 app.listen(config.PORT, console.log(`Listening on port: ${config.PORT}`));

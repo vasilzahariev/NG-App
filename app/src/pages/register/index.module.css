@@ -2,3 +2,25 @@
     text-align: center;
     margin-top: 3%;
 }
+
+.epicGamer {
+    /* color: rgb(48, 202, 48); */
+    color: rgb(206, 53, 206);
+}
+
+.submitDiv {
+    margin: 10px 0px 15px 0px;
+}
+
+.submitBtn {
+    border: 1px solid rgb(48, 202, 48);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    padding: 5px 10px;
+    background: transparent;
+}
+
+.submitBtn:hover {
+    background: rgb(48, 202, 48);
+    transition: all .5s;
+}

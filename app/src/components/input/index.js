@@ -6,8 +6,9 @@ const Input = (props) => {
         <div className={styles.inputBlock}>
             <label>
                 <span className={styles.labelText}>{props.label}</span>
-                <input className={styles.inputField} type={props.type ? props.type : 'text'} onChange={props.onChange} name={props.name ? props.name : props.label.toLowerCase()} placeholder={props.label} />
+                <input className={props.error ? styles.errorInputField : styles.inputField} type={props.type ? props.type : 'text'} onChange={props.onChange} name={props.name ? props.name : props.label.toLowerCase()} placeholder={props.label} />
             </label>
+            {props.error ? <p className={styles.error}>{props.error}</p> : <span></span>}
         </div>
     );
 }

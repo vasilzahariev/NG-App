@@ -20,8 +20,7 @@ const UserSchema = new mongoose.Schema({
     },
     fullName: {
         type: String,
-        default: '',
-        minlength: 1
+        default: ''
     },
     profilePicUrl: {
         type: String,

@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
     Switch,
-    Route
+    Route,
+    Redirect
 } from 'react-router-dom';
-//import App from './App';
 import HomeGuest from './pages/home-guest/';
 import Register from './pages/register/';
 import Login from './pages/login';
+import UserContext from './UserContext';
 
 const Navigation = () => {
+    const context = useContext(UserContext);
+    const loggedIn = context.user && context.user.loggedIn;
+
     return (
         <Switch>
             <Route path='/' exact component={HomeGuest} />
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
+            <Route path='/register'>
+                {loggedIn ? (<Redirect to='/' />) : (<Register />)}
+            </Route>
+            <Route path='/login'>
+                {loggedIn ? (<Redirect to='/' />) : (<Login />)}
+            </Route>
         </Switch>
     )
 }

@@ -1,26 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import UserContext from './UserContext';
+import getCookie from './utilies/cookie';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = (props) => {
+    const [ user, setUser ] = useState(null);
+
+    const login = (userObj) => {
+        setUser({
+            ...userObj,
+            loggedIn: true
+        });
+    }
+
+    const logout = () => {
+        document.cookie = `aid=;expires=${new Date().toUTCString()}`;
+
+        setUser({
+            loggedIn: false
+        })
+    }
+
+    useEffect(() => {
+        const token = getCookie('aid');
+
+        if (!token) {
+            logout();
+            return;
+        }
+
+        fetch('http://localhost:9999/verifyToken', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            }
+        }).then(promise => {
+            return promise.json();
+        }).then(response => {
+            if (response.error) {
+                logout();
+            } else {
+                const userObj = response.user;
+
+                login(userObj);
+            }
+        });
+    }, [])
+
+    return (
+        <UserContext.Provider value={{
+            user,
+            login,
+            logout
+        }}>
+            {props.children}
+        </UserContext.Provider>
+    )
 }
 
 export default App;

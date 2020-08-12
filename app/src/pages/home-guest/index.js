@@ -11,20 +11,20 @@ const HomeGuest = () => {
         <Layout>
             <div className={styles.cards}>
                 <HomePageCard>
-                    <div className={styles.signUpText} ><i>Join us, we've got <b>games</b>!</i></div>
+                    <div className={styles.signUpText} >Join us, we've got <span className={styles.epicGamer}>games</span>!</div>
                     <Link className={styles.signUpLink} to='/register'>SIGN UP</Link>
                 </HomePageCard>
 
                 <HomePageCard>
-                    <i>Write <b>reviews</b> of your <b>favorite games</b> and add them to <b>custom lists</b></i>
+                    Write <span className={styles.epicGamer}>reviews</span> of your <span>favorite games</span> and add them to <span>custom lists</span>
                 </HomePageCard>
 
                 <HomePageCard>
-                    <i>Find other people <b>(friends and etc)</b> and follow them to see their <b>activity</b></i>
+                    Find other people <span className={styles.epicGamer}>(friends and etc)</span> and follow them to see their <span>activity</span>
                 </HomePageCard>
 
                 <HomePageCard>
-                    <i>Keep track of the games <b>you've played</b> and <b>want to play</b></i>
+                    Keep track of the games <span className={styles.epicGamer}>you've played</span> and <span>want to play</span>
                 </HomePageCard>
             </div>
         </Layout>

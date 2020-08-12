@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     Link,
     useHistory
@@ -9,9 +9,11 @@ import styles from './index.module.css';
 import FormCard from '../../components/form-card';
 import Input from '../../components/input';
 import SubmitButton from '../../components/submit-button';
+import UserContext from '../../UserContext';
 
 const Login = () => {
     const history = useHistory();
+    const context = useContext(UserContext);
 
     const [ username, setUsername ] = useState('');
     const [ usernameErr, setUsernameErr ] = useState('');
@@ -78,7 +80,12 @@ const Login = () => {
             }
         } else {
             const cookie = response.cookie;
+            const user = response.user;
 
+            
+            console.log(context);
+            
+            context.login(user);
             document.cookie = `aid=${cookie}`;
 
             history.push('/');

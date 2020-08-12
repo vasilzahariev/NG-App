@@ -2,7 +2,8 @@ const express = require('express');
 const router = express();
 const {
     register,
-    login
+    login,
+    verifyToken
 } = require('../controllers/userController');
 
 router.post('/register', async (req, res) => {
@@ -13,6 +14,12 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     const result = await login(req, res);
+
+    res.send(result);
+})
+
+router.get('/verifyToken', async (req, res) => {
+    const result = await verifyToken(req, res);
 
     res.send(result);
 })

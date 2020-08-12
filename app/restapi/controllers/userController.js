@@ -28,7 +28,8 @@ const register = async (req, res) => {
         const token = createUserToken(userObj);
 
         return {
-            cookie: token
+            cookie: token,
+            user: userObj
         };
     } catch (e) {
         console.log(e.message);
@@ -73,7 +74,8 @@ const login = async (req, res) => {
         const token = createUserToken(user);
 
         return {
-            cookie: token
+            cookie: token,
+            user: user
         }
     } catch (e) {
         console.log(e.message);
@@ -82,8 +84,25 @@ const login = async (req, res) => {
             error: e.message
         }
     }
+}
 
-    return {};
+const verifyToken = async (req, res) => {
+    const token = req.header('Authorization');
+
+    try {
+        const decodedObj = jwt.verify(token, config.privateKey);
+        const user = await User.findById(decodedObj.userId);
+        
+        return {
+            user: user
+        }
+    } catch (error) {
+        console.log(error.message);
+
+        return {
+            error: 'Invalid token'
+        }
+    }
 }
 
 const createUserToken = (user) => {
@@ -95,5 +114,6 @@ const createUserToken = (user) => {
 
 module.exports = {
     register,
-    login
+    login,
+    verifyToken
 }

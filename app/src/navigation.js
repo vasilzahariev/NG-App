@@ -5,6 +5,7 @@ import {
     Redirect
 } from 'react-router-dom';
 import HomeGuest from './pages/home-guest/';
+import HomeUser from './pages/home-user';
 import Register from './pages/register/';
 import Login from './pages/login';
 import UserContext from './UserContext';
@@ -15,7 +16,9 @@ const Navigation = () => {
 
     return (
         <Switch>
-            <Route path='/' exact component={HomeGuest} />
+            <Route path='/' exact >
+                {loggedIn ? (<HomeUser />) : (<HomeGuest />)}
+            </Route>
             <Route path='/register'>
                 {loggedIn ? (<Redirect to='/' />) : (<Register />)}
             </Route>

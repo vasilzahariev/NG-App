@@ -101,7 +101,7 @@ const Login = () => {
                     <Input label='Username' error={usernameErr} onChange={onChangeUsername} />
                     <Input label='Password' type='password' error={passwordErr} onChange={onChangePassword} />
                     <SubmitButton value='Login' />
-                    <p>Don't have an account? <Link className={styles.link} to='/register'>Sign Up</Link></p>
+                    <p>Don't have an account? <Link className={styles.link} to='/register'>Register</Link></p>
                 </FormCard>
             </div>
         </Layout>

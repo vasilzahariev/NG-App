@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import UserContext from './UserContext';
-import getCookie from './utilies/cookie';
+import getCookie from './utils/cookie';
 
 const App = (props) => {
     const [ user, setUser ] = useState(null);
@@ -45,7 +45,11 @@ const App = (props) => {
                 login(userObj);
             }
         });
-    }, [])
+    }, []);
+
+    if (user === null || user.loggedIn === null || user.loggedIn === undefined) {
+        return (<div></div>)
+    }
 
     return (
         <UserContext.Provider value={{

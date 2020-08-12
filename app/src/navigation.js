@@ -8,6 +8,8 @@ import HomeGuest from './pages/home-guest/';
 import HomeUser from './pages/home-user';
 import Register from './pages/register/';
 import Login from './pages/login';
+import Games from './pages/games';
+import AddGame from './pages/add-game'
 import UserContext from './UserContext';
 
 const Navigation = () => {
@@ -24,6 +26,10 @@ const Navigation = () => {
             </Route>
             <Route path='/login'>
                 {loggedIn ? (<Redirect to='/' />) : (<Login />)}
+            </Route>
+            <Route path='/games' component={Games} />
+            <Route path='/admin/g/add'>
+                {loggedIn ? (<AddGame />) : (<Redirect to='/' />)}
             </Route>
         </Switch>
     )

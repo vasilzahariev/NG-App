@@ -4,6 +4,7 @@ const config = require('./config/config')[env];
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
+const gameRouter = require('./routes/game');
 const app = express();
 
 mongoose.connect(config.databaseUrl, {
@@ -22,5 +23,6 @@ mongoose.connect(config.databaseUrl, {
 require('./config/express')(app);
 
 app.use('/', authRouter);
+app.use('/', gameRouter);
 
 app.listen(config.PORT, console.log(`Listening on port: ${config.PORT}`));

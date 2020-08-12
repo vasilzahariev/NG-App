@@ -1,13 +1,17 @@
-.inputField {
-    width: 60%;
+.block {
+    margin: 25px 0px;
+}
+
+.field {
+    width: 40%;
     border: 1px solid rgba(255, 255, 255, 0.123);
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.123);
     font-size: 18px;
 }
 
-.errorInputField {
-    width: 60%;
+.errorField {
+    width: 40%;
     border: 1px solid rgb(255, 58, 58);
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.123);
@@ -23,4 +27,15 @@
 .error {
     color: rgb(255, 58, 58);
     margin-top: 5px;
+}
+
+.previewDiv {
+    margin-bottom: 25px;
+}
+
+.preview {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    border: 1px solid rgb(206, 53, 206);
 }

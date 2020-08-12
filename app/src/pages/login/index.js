@@ -81,9 +81,6 @@ const Login = () => {
         } else {
             const cookie = response.cookie;
             const user = response.user;
-
-            
-            console.log(context);
             
             context.login(user);
             document.cookie = `aid=${cookie}`;

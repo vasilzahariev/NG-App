@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HeaderLinks from '../header-links/';
 import Search from '../search/';
-import HeaderLoginRegister from '../header-login-register/';
+import HeaderAuth from '../header-auth/';
 
 class Header extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class Header extends Component {
         return (
             <nav>
                 <HeaderLinks />
-                <HeaderLoginRegister />
+                <HeaderAuth />
                 <Search />
             </nav>
         );

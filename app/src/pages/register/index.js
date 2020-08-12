@@ -141,7 +141,7 @@ const Register = () => {
                     <Input label='Email' type='email' error={emailErr} onChange={onEmailChange} />
                     <Input label='Password' type='password' error={passwordErr} onChange={onPasswordChange} />
                     <Input label='Repeat Password' type='password' name='rePassword' error={rePasswordErr} onChange={onRePasswordChange} />
-                    <SubmitButton value='Sign Up' />
+                    <SubmitButton value='Register' />
                     <p>Already have an account? <Link className={styles.link} to='/login'>Login</Link></p>
                 </FormCard>
             </div>

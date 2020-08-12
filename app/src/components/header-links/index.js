@@ -5,7 +5,7 @@ import styles from './index.module.css';
 const HeaderLinks = () => {
     return (
         <div className={styles.links}>
-            <HeaderLink to='/'>NG</HeaderLink>
+            <HeaderLink to='/'>Home</HeaderLink>
             <HeaderLink to='/games'>Games</HeaderLink>
             <HeaderLink to='/reviews'>Reviews</HeaderLink>
             <HeaderLink to='/lists'>Lists</HeaderLink>

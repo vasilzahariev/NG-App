@@ -12,7 +12,7 @@ const HomeGuest = () => {
             <div className={styles.cards}>
                 <HomePageCard>
                     <div className={styles.signUpText} >Join us, we've got <span className={styles.epicGamer}>games</span>!</div>
-                    <Link className={styles.signUpLink} to='/register'>SIGN UP</Link>
+                    <Link className={styles.signUpLink} to='/register'>REGISTER</Link>
                 </HomePageCard>
 
                 <HomePageCard>

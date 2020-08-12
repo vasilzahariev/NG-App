@@ -5,7 +5,7 @@ import styles from './index.module.css';
 const HeaderLink = (props) => {
     return (
         <div className={styles.linkBlock} >
-            <Link className={styles.link} to={props.to}>{props.children}</Link>
+            <Link className={props.epicGamer ? styles.epicGamer : styles.link} to={props.to} onClick={props.onClick}>{props.children}</Link>
         </div>
     );
 }

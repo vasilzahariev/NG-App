@@ -58,7 +58,12 @@ const getGames = async () => {
     return await Game.find().sort('-created_at');
 }
 
+const getGame = async (id) => {
+    return await Game.findById(id);
+}
+
 module.exports = {
     addGame,
-    getGames
+    getGames,
+    getGame
 }

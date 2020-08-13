@@ -10,6 +10,7 @@ import Register from './pages/register/';
 import Login from './pages/login';
 import Games from './pages/games';
 import AddGame from './pages/add-game'
+import Game from './pages/game';
 import UserContext from './UserContext';
 
 const Navigation = () => {
@@ -31,6 +32,7 @@ const Navigation = () => {
             <Route path='/admin/g/add'>
                 {loggedIn ? (<AddGame />) : (<Redirect to='/' />)}
             </Route>
+            <Route path='/g/:gameId' component={Game} />
         </Switch>
     )
 }

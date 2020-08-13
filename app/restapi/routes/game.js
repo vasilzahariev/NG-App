@@ -3,14 +3,15 @@ const router = express();
 const {
     addGame,
     getGames,
-    getGame
+    getGame,
+    addActivity
 } = require('../controllers/gameController');
 
 router.post('/addGame', async (req, res) => {
     const result = await addGame(req, res);
 
     res.send(result);
-})
+});
 
 router.get('/getGames', async (req, res) => {
     const result = await getGames();
@@ -29,6 +30,12 @@ router.get('/g/:gameId', async (req, res) => {
 
         res.status(500).send({ error: 'No game found' });
     }
+});
+
+router.post('/addActivity/:gameId', async (req, res) => {
+    const result = await addActivity(req, res);
+
+    res.send(result);
 })
 
 module.exports = router;

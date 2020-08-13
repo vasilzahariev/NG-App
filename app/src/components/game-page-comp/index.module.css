@@ -1,0 +1,42 @@
+.comp {
+    margin-top: 5%;
+}
+
+.epicGamer {
+    color: rgb(206, 53, 206);
+}
+
+.card {
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.123);
+    background-color: rgba(255, 255, 255, 0.027);
+    border-radius: 15px;
+}
+
+.cardBottom {
+    margin: 15px 0;
+}
+
+.description {
+    display: block;
+    font-size: 24px;
+    text-align: justify;
+    font-style: italic;
+}
+
+.poster {
+    display: block;
+    border-bottom: 5px solid white;
+    border-radius: 15px;
+    width: 100%;
+    height: 525px;
+}
+
+.links {
+    margin-top: 10%;
+}
+
+.trailer {
+    width: 50%;
+    height: 450px;
+}

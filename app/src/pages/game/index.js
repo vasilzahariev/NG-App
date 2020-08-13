@@ -6,6 +6,7 @@ import {
 import Layout from '../../components/layout';
 import Page from '../../components/page-div';
 import Title from '../../components/title';
+import GamePageComp from '../../components/game-page-comp';
 
 const Game = () => {
     const [game, setGame] = useState(null);
@@ -45,7 +46,7 @@ const Game = () => {
             <Page>
                 {game ?
                     (
-                        <Title>{game.name}</Title>
+                        <GamePageComp game={game} />
                     ) : (
                         <Title>Reciving data for the mission...</Title>
                     )}

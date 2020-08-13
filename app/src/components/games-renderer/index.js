@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import GameCard from '../game-card';
+import Grid from '@material-ui/core/Grid';
 
 const GamesRenderer = (props) => {
     const renderer = useMemo(() => {
@@ -12,7 +13,9 @@ const GamesRenderer = (props) => {
 
     return (
         <div>
-            {renderer}
+            <Grid container direction='row' justify="space-around" alignItems="center" spacing={5}>
+                {renderer}
+            </Grid>
         </div>
     )
 }

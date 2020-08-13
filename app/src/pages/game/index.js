@@ -31,8 +31,6 @@ const Game = () => {
 
             const game = response.game;
 
-            console.log(game);
-
             setGame(game);
         }
     }

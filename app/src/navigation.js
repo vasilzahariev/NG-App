@@ -32,7 +32,7 @@ const Navigation = () => {
             <Route path='/admin/g/add'>
                 {loggedIn ? (<AddGame />) : (<Redirect to='/' />)}
             </Route>
-            <Route path='/g/:gameId' component={Game} />
+            <Route path='/g/:gameId' exact component={Game} />
         </Switch>
     )
 }

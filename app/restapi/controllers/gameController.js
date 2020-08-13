@@ -24,7 +24,8 @@ const addGame = async (req, res) => {
         await game.save();
 
         return {
-            success: true
+            success: true,
+            _id: game._id
         };
     } catch (err) {
         if (err.message.includes('E11000') && err.message.includes('name')) {

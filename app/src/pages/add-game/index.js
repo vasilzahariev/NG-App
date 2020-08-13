@@ -121,7 +121,7 @@ const AddGame = () => {
         const response = await promise.json();
 
         if (response.success) {
-            history.push(`/g/${name}`);
+            history.push(`/g/${response._id}`);
         } else {
             const err = response.error;
             if (err.includes('image')) {

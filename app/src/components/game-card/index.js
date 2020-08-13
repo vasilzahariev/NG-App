@@ -6,16 +6,14 @@ import styles from './index.module.css'
 
 const GameCard = (props) => {
     const getLink = () => {
-        const val = props.gameName.replace(' ', '%20');
-
-        return `/g/${val}`;
+        return `/g/${props.game_id}`;
     }
 
     return (
         <div className={styles.card}>
             <Link className={styles.gameLink} to={getLink}>
                 <img className={styles.poster} src={props.posterUrl} alt='GamePoster' />
-                <h3 className={styles.gameName}>{props.gameName}</h3>
+                <h4 className={styles.gameName}>{props.gameName}</h4>
             </Link>
         </div>
     )

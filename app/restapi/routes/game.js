@@ -4,7 +4,9 @@ const {
     addGame,
     getGames,
     getGame,
-    addActivity
+    addActivity,
+    getGameStatus,
+    getAllUserStatuses
 } = require('../controllers/gameController');
 
 router.post('/addGame', async (req, res) => {
@@ -13,20 +15,39 @@ router.post('/addGame', async (req, res) => {
     res.send(result);
 });
 
-router.get('/getGames', async (req, res) => {
-    const result = await getGames();
+router.post('/getGames', async (req, res) => {
+    const userId = req.body.userId;
+    const games = await getGames();
 
-    res.send(result);
+    if (userId) {
+        const statuses = await getAllUserStatuses(userId);
+
+        res.send({
+            games,
+            statuses
+        });
+
+        return;
+    }
+
+    res.send({ games });
 });
 
-router.get('/g/:gameId', async (req, res) => {
-    const id = req.params.gameId;
+router.post('/getGame', async (req, res) => {
+    const gameId = req.body.gameId;
+    const userId = req.body.userId;
 
     try {
-        const game = await getGame(id);
+        const game = await getGame(gameId);
 
-        res.status(200).send({ game });
+        const status = await getGameStatus(userId, gameId);
+
+        res.status(200).send({
+            game,
+            status: status ? status.status : 0
+        });
     } catch (error) {
+        console.log(error);
 
         res.status(500).send({ error: 'No game found' });
     }

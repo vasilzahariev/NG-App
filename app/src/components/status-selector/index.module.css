@@ -1,3 +1,19 @@
 .grid {
     display: block;
 }
+
+.wantTo {
+    color: cyan;
+}
+
+.playing {
+    color: rgb(48, 202, 48);
+}
+
+.finished {
+    color: rgb(206, 53, 206);
+}
+
+.abond {
+    color: red;
+}

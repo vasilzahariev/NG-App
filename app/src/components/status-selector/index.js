@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 const StatusSelector = (props) => {
     const history = useHistory();
 
-    const [ status, setStatus ] = useState(0);
+    const [status, setStatus] = useState(props.status ? props.status : 0);
 
     const onChange = (e) => {
         const val = e.target.value;
@@ -35,7 +35,7 @@ const StatusSelector = (props) => {
         const response = await promise.json();
 
         if (response.success) {
-            history.push('/');
+            props.updateHandler();
         } else {
             console.log(response.error);
             history.push('/error');
@@ -48,16 +48,16 @@ const StatusSelector = (props) => {
             <div className={styles.grid}>
                 <Grid container direction='column' justify="space-evenly" alignItems="center">
                     <Grid item xs={12}>
-                        <RadioBtn name='status' value={1} onChange={onChange}>Want to play</RadioBtn>
+                        <RadioBtn name='status' value={1} onChange={onChange}><span className={styles.wantTo}>Want to play</span></RadioBtn>
                     </Grid>
                     <Grid item xs={12}>
-                        <RadioBtn name='status' value={2} onChange={onChange}>Playing</RadioBtn>
+                        <RadioBtn name='status' value={2} onChange={onChange}><span className={styles.playing}>Playing</span></RadioBtn>
                     </Grid>
                     <Grid item xs={12}>
-                        <RadioBtn name='status' value={3} onChange={onChange}>Finished</RadioBtn>
+                        <RadioBtn name='status' value={3} onChange={onChange}><span className={styles.finished}>Finished</span></RadioBtn>
                     </Grid>
                     <Grid item xs={12}>
-                        <RadioBtn name='status' value={4} onChange={onChange}>Abondanded</RadioBtn>
+                        <RadioBtn name='status' value={4} onChange={onChange}><span className={styles.abond}>Abandoned</span></RadioBtn>
                     </Grid>
                 </Grid>
             </div>

@@ -10,11 +10,11 @@ const addGame = async (req, res) => {
         posterFile,
         trailerUrl
     } = req.body;
-    
+
     const posterUrl = await uploadPoster(posterFile);
-    
+
     if (!posterUrl) return { error: 'An error occurred while uploading the image' };
-    
+
     try {
         const game = new Game({
             name,
@@ -22,7 +22,7 @@ const addGame = async (req, res) => {
             posterUrl,
             trailerUrl
         });
-        
+
         await game.save();
 
         return {
@@ -35,7 +35,7 @@ const addGame = async (req, res) => {
                 error: 'There is already a game with this name'
             }
         }
-        
+
         return {
             error: err.message
         }
@@ -47,21 +47,30 @@ const uploadPoster = async (file) => {
         const uploadedResponse = await cloudinary.uploader.upload(file, {
             upload_preset: 'dev_setups'
         });
-        
+
         return uploadedResponse.url;
     } catch (error) {
         console.log(error);
-        
+
         return '';
     }
 }
 
 const getGames = async () => {
-    return await Game.find().sort('-created_at');
+    return await Game.find().sort();
 }
 
 const getGame = async (id) => {
     return await Game.findById(id);
+}
+
+const getGameStatus = async (userId, gameId) => {
+    try {
+        const result = await GameStatus.findOne({ userId, gameId });
+        return result;
+    } catch (error) {
+        return undefined;
+    }
 }
 
 const addActivity = async (req, res) => {
@@ -109,7 +118,7 @@ const getStatusMessage = status => {
 }
 
 const addOrUpdateGameStatus = async (userId, gameId, status) => {
-    const gStatus = await GameStatus.findOne({ userId, gameId} );
+    const gStatus = await GameStatus.findOne({ userId, gameId });
 
     if (!gStatus) {
         const gameStatus = new GameStatus({
@@ -129,9 +138,15 @@ const addOrUpdateGameStatus = async (userId, gameId, status) => {
     }
 }
 
+const getAllUserStatuses = async (userId) => {
+    return await GameStatus.find({ userId })
+}
+
 module.exports = {
     addGame,
     getGames,
     getGame,
-    addActivity
+    addActivity,
+    getGameStatus,
+    getAllUserStatuses
 }

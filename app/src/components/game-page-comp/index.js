@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Title from '../title';
 import Grid from '@material-ui/core/Grid';
 import HeaderLink from '../header-link';
@@ -21,6 +21,10 @@ const GamePageComp = (props) => {
         setStatusSelector(!showStatusSelector);
     }
 
+    const updateHandler = () => {
+        props.updateHandler();
+    }
+
     return (
 
         <div className={styles.comp}>
@@ -38,7 +42,7 @@ const GamePageComp = (props) => {
                 <Grid item xs={3}>
                     <div className={styles.cardDiv}>
                         <div className={styles.card}>
-                            <img className={styles.poster} src={game.posterUrl} alt='Poster' />
+                            <img className={`${styles.poster} ${(props.status === 0 ? styles.def : (props.status === 1 ? styles.wantTo : (props.status === 2 ? styles.playing : (props.status === 3 ? styles.finished : (props.status === 4 ? styles.abond : styles.def)))))}`} src={game.posterUrl} alt='Poster' />
                             {context.user && context.user.loggedIn && (
                                 <div className={styles.cardBottom}>
                                     <Grid container direction="row"
@@ -67,7 +71,7 @@ const GamePageComp = (props) => {
                 </Grid>
             </Grid>
 
-            { showStatusSelector && (<StatusSelector gameId={game._id} userId={context.user._id} />) }
+            { showStatusSelector && (<StatusSelector gameId={game._id} userId={context.user._id} status={props.status} updateHandler={updateHandler} />) }
 
             <div>
                 <Title>Trailer:</Title>

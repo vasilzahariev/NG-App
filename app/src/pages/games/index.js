@@ -10,18 +10,26 @@ const Games = () => {
     const context = useContext(UserContext);
     
     const [ games, setGames ] = useState([]);
+    const [ statuses, setStatuses ] = useState([]);
     const [ ended, setEnded ] = useState(false);
 
     useEffect(() => {
 
         fetch('http://localhost:9999/getGames', {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                userId: (context.user && context.user.loggedIn ? context.user._id : '')
+            })
         }).then(promise => {
             promise.json().then(response => {
-                setGames(response);
+                const gamesArr = response.games.reverse();
+                const statusesArr = response.statuses;
+
+                setStatuses(statusesArr);
+                setGames(gamesArr);
                 setEnded(true);
             });
         });
@@ -36,7 +44,7 @@ const Games = () => {
                     {(context.user && context.user.loggedIn) ? <HeaderLink to='/admin/g/add'>Add a game</HeaderLink> : <span></span>}
                 </Title>
 
-                { (ended && games.length === 0) ? <p>No games! :(</p> :  <GamesRenderer games={games} /> }
+                { (ended && games.length === 0) ? <p>No games! :(</p> :  <GamesRenderer statuses={statuses} games={games} test={true} /> }
             </div>
         </Layout>
     );

@@ -206,6 +206,10 @@ const addReview = async (req, res) => {
     }
 }
 
+const getReviews = async () => {
+    return await GameReview.find();
+}
+
 module.exports = {
     addGame,
     getGames,
@@ -215,5 +219,6 @@ module.exports = {
     getAllUserStatuses,
     getUserActivity,
     getUserGamesWithStatus,
-    addReview
+    addReview,
+    getReviews
 }

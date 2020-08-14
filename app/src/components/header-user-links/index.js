@@ -8,7 +8,7 @@ const HeaderUserLinks = () => {
     const context = useContext(UserContext);
     const history = useHistory();
 
-    const link = '/u/' + context.user.username;
+    const link = '/u/' + context.user._id;
 
     const onClickLogout = () => {
         context.logout();

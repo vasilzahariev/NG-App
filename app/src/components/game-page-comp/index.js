@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Title from '../title';
 import Grid from '@material-ui/core/Grid';
 import HeaderLink from '../header-link';
@@ -8,6 +8,7 @@ import GameButton from '../game-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faPlus, faPen } from '@fortawesome/free-solid-svg-icons';
 import StatusSelector from '../status-selector';
+import Poster from '../poster';
 
 const GamePageComp = (props) => {
     const context = useContext(UserContext);
@@ -19,6 +20,10 @@ const GamePageComp = (props) => {
 
     const onClickStatus = async () => {
         setStatusSelector(!showStatusSelector);
+    }
+
+    const updateHandler = () => {
+        props.updateHandler();
     }
 
     return (
@@ -38,7 +43,7 @@ const GamePageComp = (props) => {
                 <Grid item xs={3}>
                     <div className={styles.cardDiv}>
                         <div className={styles.card}>
-                            <img className={styles.poster} src={game.posterUrl} alt='Poster' />
+                            <Poster posterUrl={game.posterUrl} status={props.status} height={525} />
                             {context.user && context.user.loggedIn && (
                                 <div className={styles.cardBottom}>
                                     <Grid container direction="row"
@@ -67,7 +72,7 @@ const GamePageComp = (props) => {
                 </Grid>
             </Grid>
 
-            { showStatusSelector && (<StatusSelector gameId={game._id} userId={context.user._id} />) }
+            { showStatusSelector && (<StatusSelector gameId={game._id} userId={context.user._id} status={props.status} updateHandler={updateHandler} />) }
 
             <div>
                 <Title>Trailer:</Title>

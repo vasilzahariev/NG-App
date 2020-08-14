@@ -1,0 +1,22 @@
+.userCard {
+    border: 1px solid rgba(255, 255, 255, 0.123);
+    background-color: rgba(255, 255, 255, 0.027);
+    border-radius: 15px;
+    padding: 2% 5%;
+    text-align: center;
+}
+
+.line {
+    border: 1.5px solid rgba(255, 255, 255, 0.123);
+}
+
+.userLink {
+    text-decoration: none;
+    font-weight: bolder;
+    color: rgb(206, 53, 206);
+}
+
+.userLink:hover {
+    color: rgb(163, 22, 163);
+    transition: all .5s;
+}

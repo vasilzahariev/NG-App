@@ -9,13 +9,6 @@
     transition: all .5s;
 }
 
-.poster {
-    width: 100%;
-    height: 350px;
-    border-bottom: 5px solid white;
-    border-radius: 15px;
-}
-
 .gameLink {
     text-decoration: none;
     font-size: 100%;

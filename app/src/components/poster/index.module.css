@@ -1,0 +1,24 @@
+.poster {
+    width: 100%;
+    border-radius: 15px;
+}
+
+.def {
+    border-bottom: 10px solid white;
+}
+
+.wantTo {
+    border-bottom: 10px solid cyan;
+}
+
+.playing {
+    border-bottom: 10px solid rgb(48, 202, 48);
+}
+
+.finished {
+    border-bottom: 10px solid rgb(255,223,0);
+}
+
+.abond {
+    border-bottom: 10px solid red;
+}

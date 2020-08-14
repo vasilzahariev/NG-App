@@ -1,3 +1,24 @@
 .grid {
     display: block;
 }
+
+.wantTo {
+    color: cyan;
+}
+
+.playing {
+    color: rgb(48, 202, 48);
+}
+
+.finished {
+    color: rgb(255,223,0);
+}
+
+.abond {
+    color: red;
+}
+
+.disclaimer {
+    color: rgb(241, 57, 57);
+    font-size: 12px;
+}

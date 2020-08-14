@@ -8,7 +8,8 @@ const {
     getGameStatus,
     getAllUserStatuses,
     getUserActivity,
-    getUserGamesWithStatus
+    getUserGamesWithStatus,
+    addReview
 } = require('../controllers/gameController');
 
 router.post('/addGame', async (req, res) => {
@@ -79,6 +80,12 @@ router.post('/userGamesWithStatus', async (req, res) => {
     const result = await getUserGamesWithStatus(req, res);
 
     res.send({ games: result })
+})
+
+router.post('/addReview', async (req, res) => {
+    const result = await addReview(req, res);
+
+    res.send(result)
 })
 
 module.exports = router;

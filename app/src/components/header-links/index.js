@@ -8,7 +8,6 @@ const HeaderLinks = () => {
             <HeaderLink to='/'>Home</HeaderLink>
             <HeaderLink to='/games'>Games</HeaderLink>
             <HeaderLink to='/reviews'>Reviews</HeaderLink>
-            <HeaderLink to='/lists'>Lists</HeaderLink>
         </div>
     );
 }

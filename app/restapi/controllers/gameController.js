@@ -1,6 +1,7 @@
 const Game = require('../models/game');
 const Activity = require('../models/activity');
 const GameStatus = require('../models/gameStatus');
+const GameReview = require('../models/gameReview');
 const { cloudinary } = require('../utils/cloudinary');
 
 const addGame = async (req, res) => {
@@ -179,6 +180,32 @@ const getGamesWithIds = async (gameIds) => {
     });
 }
 
+const addReview = async (req, res) => {
+    const {
+        review,
+        score,
+        userId,
+        gameId
+    } = req.body;
+
+    try {
+        const gameReview = new GameReview({
+            review,
+            score,
+            userId,
+            gameId
+        });
+
+        const reviewObj = await gameReview.save();
+
+        return { reviewId: reviewObj._id };
+    } catch(err) {
+        console.log(err.message);
+
+        return {err: err.message};
+    }
+}
+
 module.exports = {
     addGame,
     getGames,
@@ -187,5 +214,6 @@ module.exports = {
     getGameStatus,
     getAllUserStatuses,
     getUserActivity,
-    getUserGamesWithStatus
+    getUserGamesWithStatus,
+    addReview
 }

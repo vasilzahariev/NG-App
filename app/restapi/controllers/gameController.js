@@ -91,7 +91,11 @@ const addActivity = async (req, res) => {
             date: Date.now()
         });
 
-        addOrUpdateGameStatus(userId, gameId, statusNum);
+        const result = await addOrUpdateGameStatus(userId, gameId, statusNum);
+
+        if (!result) return {
+            success: true
+        };
 
         await activity.save();
     } catch (error) {
@@ -107,7 +111,7 @@ const addActivity = async (req, res) => {
 
 const getStatusMessage = status => {
     switch (status) {
-        case 0: return '';
+        case 0: return 'removed';
         case 1: return 'wants to play';
         case 2: return 'is playing';
         case 3: return 'has finshed';
@@ -129,6 +133,9 @@ const addOrUpdateGameStatus = async (userId, gameId, status) => {
 
         await gameStatus.save();
     } else {
+
+        if (gStatus.status === status) { return false; }
+
         await GameStatus.findOneAndUpdate({
             userId,
             gameId
@@ -136,10 +143,40 @@ const addOrUpdateGameStatus = async (userId, gameId, status) => {
             status: status
         })
     }
+
+    return true;
 }
 
 const getAllUserStatuses = async (userId) => {
     return await GameStatus.find({ userId })
+}
+
+const getUserActivity = async (userId) => {
+    return await Activity.find({ userId });
+}
+
+const getUserGamesWithStatus = async (req, res) => {
+    const {
+        userId,
+        status
+    } = req.body;
+
+    const gameIds = await getGameIds(userId, status);
+    const games = await getGamesWithIds(gameIds);
+
+    return games;
+}
+
+const getGameIds = async (userId, status) => {
+    return await (await GameStatus.find({ userId, status })).map(gs => gs.gameId);
+}
+
+const getGamesWithIds = async (gameIds) => {
+    return await (await Game.find()).filter(g => {
+        for (const id of gameIds) {
+            if (g._id.equals(id)) return g;
+        }
+    });
 }
 
 module.exports = {
@@ -148,5 +185,7 @@ module.exports = {
     getGame,
     addActivity,
     getGameStatus,
-    getAllUserStatuses
+    getAllUserStatuses,
+    getUserActivity,
+    getUserGamesWithStatus
 }

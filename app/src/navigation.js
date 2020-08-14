@@ -12,6 +12,7 @@ import Games from './pages/games';
 import AddGame from './pages/add-game'
 import Game from './pages/game';
 import UserContext from './UserContext';
+import UserGstatusGames from './pages/user-gstatus-games';
 
 const Navigation = () => {
     const context = useContext(UserContext);
@@ -33,6 +34,7 @@ const Navigation = () => {
                 {loggedIn ? (<AddGame />) : (<Redirect to='/' />)}
             </Route>
             <Route path='/g/:gameId' exact component={Game} />
+            <Route path='/u/:userId/collections/:gStatus' exact component={UserGstatusGames} />
         </Switch>
     )
 }

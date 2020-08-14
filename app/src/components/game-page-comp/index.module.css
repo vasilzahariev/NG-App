@@ -26,30 +26,9 @@
 
 .poster {
     display: block;
-    /* border-bottom: 5px solid white; */
     border-radius: 15px;
     width: 100%;
     height: 525px;
-}
-
-.def {
-    border-bottom: 10px solid white;
-}
-
-.wantTo {
-    border-bottom: 10px solid cyan;
-}
-
-.playing {
-    border-bottom: 10px solid rgb(48, 202, 48);
-}
-
-.finished {
-    border-bottom: 10px solid rgb(206, 53, 206);
-}
-
-.abond {
-    border-bottom: 10px solid red;
 }
 
 .links {

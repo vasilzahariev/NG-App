@@ -8,6 +8,7 @@ import GameButton from '../game-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faPlus, faPen } from '@fortawesome/free-solid-svg-icons';
 import StatusSelector from '../status-selector';
+import Poster from '../poster';
 
 const GamePageComp = (props) => {
     const context = useContext(UserContext);
@@ -42,7 +43,7 @@ const GamePageComp = (props) => {
                 <Grid item xs={3}>
                     <div className={styles.cardDiv}>
                         <div className={styles.card}>
-                            <img className={`${styles.poster} ${(props.status === 0 ? styles.def : (props.status === 1 ? styles.wantTo : (props.status === 2 ? styles.playing : (props.status === 3 ? styles.finished : (props.status === 4 ? styles.abond : styles.def)))))}`} src={game.posterUrl} alt='Poster' />
+                            <Poster posterUrl={game.posterUrl} status={props.status} height={525} />
                             {context.user && context.user.loggedIn && (
                                 <div className={styles.cardBottom}>
                                     <Grid container direction="row"

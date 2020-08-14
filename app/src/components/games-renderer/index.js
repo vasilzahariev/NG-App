@@ -19,7 +19,7 @@ const GamesRenderer = (props) => {
 
     return (
         <div>
-            <Grid container direction='row' justify="space-around" alignItems="center" spacing={5}>
+            <Grid container direction='row' justify="flex-start" alignItems="baseline" spacing={5}>
                 {renderer}
             </Grid>
         </div>

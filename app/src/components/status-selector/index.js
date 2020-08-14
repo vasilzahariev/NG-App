@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 const StatusSelector = (props) => {
     const history = useHistory();
 
-    const [status, setStatus] = useState(props.status ? props.status : 0);
+    const [status, setStatus] = useState(0);
 
     const onChange = (e) => {
         const val = e.target.value;
@@ -62,6 +62,7 @@ const StatusSelector = (props) => {
                 </Grid>
             </div>
             <SubmitButton value='Save' />
+            <p className={styles.disclaimer}>Disclaimer: If you don't select any of the options and hit save, you'll remove the game from you collections (not lists)</p>
         </FormCard>
     );
 }

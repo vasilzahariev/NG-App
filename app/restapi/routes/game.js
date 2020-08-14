@@ -6,7 +6,9 @@ const {
     getGame,
     addActivity,
     getGameStatus,
-    getAllUserStatuses
+    getAllUserStatuses,
+    getUserActivity,
+    getUserGamesWithStatus
 } = require('../controllers/gameController');
 
 router.post('/addGame', async (req, res) => {
@@ -57,6 +59,26 @@ router.post('/addActivity/:gameId', async (req, res) => {
     const result = await addActivity(req, res);
 
     res.send(result);
+})
+
+router.post('/getUserActivity', async (req, res) => {
+    const userId = req.body.userId;
+    const result = await getUserActivity(userId);
+
+    res.send(result);
+})
+
+router.get('/g/:gameId', async (req, res) => {
+    const gameId = req.params.gameId;
+    const game = await getGame(gameId);
+    
+    res.send(game);
+})
+
+router.post('/userGamesWithStatus', async (req, res) => {
+    const result = await getUserGamesWithStatus(req, res);
+
+    res.send({ games: result })
 })
 
 module.exports = router;

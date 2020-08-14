@@ -44,7 +44,7 @@ const Games = () => {
                     {(context.user && context.user.loggedIn) ? <HeaderLink to='/admin/g/add'>Add a game</HeaderLink> : <span></span>}
                 </Title>
 
-                { (ended && games.length === 0) ? <p>No games! :(</p> :  <GamesRenderer statuses={statuses} games={games} test={true} /> }
+                {!ended ? <p>Receiving missions...</p> : (ended && games.length === 0) ? <p>No games! :(</p> :  <GamesRenderer statuses={statuses} games={games} test={true} /> }
             </div>
         </Layout>
     );

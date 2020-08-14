@@ -112,8 +112,13 @@ const createUserToken = (user) => {
     }, config.privateKey)
 }
 
+const getUser = async (userId) => {
+    return await User.findById(userId);
+}
+
 module.exports = {
     register,
     login,
-    verifyToken
+    verifyToken,
+    getUser
 }

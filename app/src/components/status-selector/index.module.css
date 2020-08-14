@@ -11,9 +11,14 @@
 }
 
 .finished {
-    color: rgb(206, 53, 206);
+    color: rgb(255,223,0);
 }
 
 .abond {
     color: red;
+}
+
+.disclaimer {
+    color: rgb(241, 57, 57);
+    font-size: 12px;
 }

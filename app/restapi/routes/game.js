@@ -10,8 +10,12 @@ const {
     getUserActivity,
     getUserGamesWithStatus,
     addReview,
-    getReviews
+    getReviews,
+    getReview
 } = require('../controllers/gameController');
+const {
+    getUser
+} = require('../controllers/userController');
 
 router.post('/addGame', async (req, res) => {
     const result = await addGame(req, res);
@@ -93,6 +97,28 @@ router.get('/getReviews', async (req, res) => {
     const result = await getReviews();
 
     res.send({ reviews: result });
+})
+
+router.get('/r/:reviewId', async (req, res) => {
+    const reviewId = req.params.reviewId;
+    
+    try {
+        const review = await getReview(reviewId);
+        const game = await getGame(review.gameId);
+        const username = await (await getUser(review.userId)).username;
+
+        res.send({
+            review,
+            game,
+            username
+        })
+    } catch (err) {
+        console.log(err.message);
+
+        res.send({
+            err: err.message
+        })
+    }
 })
 
 module.exports = router;

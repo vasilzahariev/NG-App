@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Poster from '../poster';
 import EpicGamer from '../epic-gamer';
 
+// TODO: Add ... for the tile like for the description
+
 const ReviewCard = (props) => {
     const [username, setUsername] = useState('');
     const [game, setGame] = useState({});

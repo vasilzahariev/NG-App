@@ -1,0 +1,30 @@
+.review {
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 10%;
+}
+
+.gameLink {
+    text-decoration: none;
+    color: rgb(48, 202, 48);
+}
+
+.gameLink:hover {
+    color: rgba(0, 128, 0, 0.616);
+    transition: all .5s;
+}
+
+.userLink {
+    text-decoration: none;
+    color: rgb(206, 53, 206);
+    font-weight: bolder;
+}
+
+.userLink:hover {
+    color: rgb(145, 14, 145);
+    transition: all .5s;
+}
+
+.score {
+    text-align: right;
+}

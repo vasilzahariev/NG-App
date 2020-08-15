@@ -101,7 +101,7 @@ const uploadPoster = async (file) => {
 }
 
 const getGames = async () => {
-    return await Game.find().sort();
+    return await Game.find();
 }
 
 const getGame = async (id) => {

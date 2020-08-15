@@ -178,6 +178,10 @@ const getFollowersCount = async (userId) => {
     return await (await Following.find({ followsId: userId })).length;
 }
 
+const getUsers = async () => {
+    return await User.find();
+}
+
 module.exports = {
     register,
     login,
@@ -188,5 +192,6 @@ module.exports = {
     isFollowing,
     unfollow,
     getFollowingCount,
-    getFollowersCount
+    getFollowersCount,
+    getUsers
 }

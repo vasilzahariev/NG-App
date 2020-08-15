@@ -20,6 +20,7 @@ import GameReview from './pages/game-reviews';
 import User from './pages/user';
 import UserActivity from './pages/user-activity';
 import UserReviews from './pages/user-reviews';
+import SearchPage from './pages/search-page';
 
 const Navigation = () => {
     const context = useContext(UserContext);
@@ -51,6 +52,7 @@ const Navigation = () => {
             <Route path='/u/:userId' exact component={User} />
             <Route path='/u/:userId/activity' exact component={UserActivity} />
             <Route path='/u/:userId/reviews' exact component={UserReviews} />
+            <Route path='/search/:serachVal' exact component={SearchPage} />
         </Switch>
     )
 }

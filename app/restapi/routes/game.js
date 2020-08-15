@@ -153,6 +153,23 @@ router.get('/g/:gameId/reviews', async (req, res) => {
     }
 })
 
+router.get('/getGames/:search', async (req, res) => {
+    const search = req.params.search;
+    const test = await getGames();
+
+    console.log(test);
+
+    const games = await (await getGames()).filter(g => {
+        if (g.name.toLowerCase().includes(search.toLowerCase())) {
+            return g;
+        }
+    });
+
+    //console.log(games);
+
+    res.send({games});
+});
+
 router.post('/editGame', async (req, res) => {
     const result = await editGame(req, res);
 

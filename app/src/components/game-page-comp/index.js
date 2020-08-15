@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Title from '../title';
 import Grid from '@material-ui/core/Grid';
 import HeaderLink from '../header-link';
@@ -37,11 +38,11 @@ const GamePageComp = (props) => {
     }
 
     return (
-
         <div className={styles.comp}>
             <Grid container justify="space-evenly" alignItems="center" spacing={5}>
                 <Grid item xs={6}>
                     <Title><span className={styles.epicGamer}>{game.name}</span></Title>
+                    { context.user && context.user.loggedIn && context.user.isAdmin && <Link to={`/admin/g/edit/${game._id}`}><h2>Edit</h2></Link>}
                     <p className={styles.description}>
                         {game.description}
                     </p>
@@ -77,7 +78,7 @@ const GamePageComp = (props) => {
             </Grid>
 
             {showStatusSelector && (<StatusSelector gameId={game._id} userId={context.user._id} status={props.status} updateHandler={updateHandler} />)}
-            
+
             {showReviewForm && (<ReviewForm gameId={game._id} userId={context.user._id} />)}
 
             <div>

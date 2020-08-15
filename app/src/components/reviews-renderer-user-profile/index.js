@@ -12,7 +12,7 @@ const ReviewsRendererUserProfile = (props) => {
     }, [props.reviews]);
 
     return (
-        <Grid container direction="row" justify="space-around" alignItems="center" spacing={5}>
+        <Grid container direction="row" justify="flex-center" alignItems="center" spacing={5}>
             {renderer}
         </Grid>
     )

@@ -11,3 +11,7 @@
 .link:hover {
     text-decoration: underline;
 }
+
+.collections {
+    margin-bottom: 100px;
+}

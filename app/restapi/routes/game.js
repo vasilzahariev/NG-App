@@ -70,9 +70,14 @@ router.post('/addActivity/:gameId', async (req, res) => {
 
 router.post('/getUserActivity', async (req, res) => {
     const userId = req.body.userId;
-    const result = await getUserActivity(userId);
+    
+    try {
+        const result = await getUserActivity(userId);
 
-    res.send(result);
+        res.send(result);
+    } catch (error) {
+        res.send({err: error.message})
+    }
 })
 
 router.get('/g/:gameId', async (req, res) => {

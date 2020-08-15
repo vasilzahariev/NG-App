@@ -17,6 +17,8 @@ import Reviews from './pages/reviews';
 import Review from './pages/review';
 import GameReview from './pages/game-reviews';
 import User from './pages/user';
+import UserActivity from './pages/user-activity';
+import UserReviews from './pages/user-reviews';
 
 const Navigation = () => {
     const context = useContext(UserContext);
@@ -43,7 +45,8 @@ const Navigation = () => {
             <Route path='/r/:reviewId' exact component={Review} />
             <Route path='/g/:gameId/reviews' exact component={GameReview} />
             <Route path='/u/:userId' exact component={User} />
-            <Route path='u/:userId/activity' exact />
+            <Route path='/u/:userId/activity' exact component={UserActivity} />
+            <Route path='/u/:userId/reviews' exact component={UserReviews} />
         </Switch>
     )
 }

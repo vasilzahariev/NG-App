@@ -53,13 +53,14 @@ const User = () => {
                         {ended && (activity.length === 0) && (<p>No Activity!</p>)}
                     </Grid>
                     <Grid item>
-                        <Grid container direction='row' justify='space-between' alignItems="center">
+                        <Grid className={styles.collections} container direction='row' justify='space-between' alignItems="flex-start">
                             <Grid item xs={9}>
                                 {ended && (<Link className={styles.link} to={`/u/${user._id}/reviews`}><h1 className={styles.title}>Reviews</h1></Link>)}
                                 {ended && (<ReviewsRendererUserProfile reviews={reviews} />)}
                                 {ended && (reviews.length === 0) && (<p>No Reviews!</p>)}
                             </Grid>
                             <Grid item xs={2}>
+                                {ended && <h1 className={styles.title}>Collections</h1>}
                                 {ended && (<UserCollectionBtns user={user} />)}
                             </Grid>
                         </Grid>

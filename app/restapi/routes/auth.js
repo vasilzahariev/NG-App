@@ -67,4 +67,22 @@ router.get('/u/:userId', async (req, res) => {
     }
 })
 
+router.get('/u/:userId/reviews', async (req, res) => {
+    const userId = req.params.userId;
+    
+    try {
+        const reviews = await getUserReviews(userId);
+        const username = await (await getUser(userId)).username;
+
+        res.send({
+            reviews,
+            username
+        })
+    } catch (error) {
+        console.log(error.message);
+        
+        res.send({ err: error.message })
+    }
+});
+
 module.exports = router;

@@ -5,7 +5,12 @@ const {
     login,
     verifyToken,
     getUser,
-    getUserReviews
+    getUserReviews,
+    follow,
+    isFollowing,
+    unfollow,
+    getFollowersCount,
+    getFollowingCount
 } = require('../controllers/userController');
 const {
     getUserActivity,
@@ -51,12 +56,16 @@ router.get('/u/:userId', async (req, res) => {
         const gameIds = activity.map(a => a.gameId);
         const games = await getGamesWithIds(gameIds);
         const reviews = await (await getUserReviews(userId)).reverse().slice(0, 4);
+        const following = await getFollowingCount(userId);
+        const followers = await getFollowersCount(userId);
 
         res.send({
             user,
             activity,
             games,
-            reviews
+            reviews,
+            following,
+            followers
         });
     } catch (error) {
         console.log(error.message);
@@ -69,7 +78,7 @@ router.get('/u/:userId', async (req, res) => {
 
 router.get('/u/:userId/reviews', async (req, res) => {
     const userId = req.params.userId;
-    
+
     try {
         const reviews = await getUserReviews(userId);
         const username = await (await getUser(userId)).username;
@@ -80,9 +89,33 @@ router.get('/u/:userId/reviews', async (req, res) => {
         })
     } catch (error) {
         console.log(error.message);
-        
+
         res.send({ err: error.message })
     }
 });
+
+router.post('/follow', async (req, res) => {
+    const result = await follow(req, res);
+
+    res.send(result);
+})
+
+router.post('/isFollowing', async (req, res) => {
+    try {
+        const result = await isFollowing(req, res);
+
+        res.send({ isFollowing: result.length !== 0 ? true : false});
+    } catch (err) {
+        console.log(err.message);
+
+        res.send({ error: err.message });
+    }
+});
+
+router.post('/unfollow', async (req, res) => {
+    const result = await unfollow(req, res);
+    
+    res.send(result);
+})
 
 module.exports = router;

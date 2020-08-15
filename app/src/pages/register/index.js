@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     Link,
     useHistory
@@ -9,9 +9,11 @@ import Input from '../../components/input/';
 import Title from '../../components/title/';
 import FormCard from '../../components/form-card/';
 import SubmitButton from '../../components/submit-button';
+import UserContext from '../../UserContext';
 
 const Register = () => {
     const history = useHistory();
+    const context = useContext(UserContext);
 
     const [ username, setUsername ] = useState('');
     const [ usernameErr, setUsernameErr ] = useState('');
@@ -122,6 +124,8 @@ const Register = () => {
             }
         } else {
             const cookie = response.cookie;
+
+            context.login(response.user);
 
             document.cookie = `aid=${cookie}`;
 

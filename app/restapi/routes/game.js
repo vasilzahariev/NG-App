@@ -12,7 +12,8 @@ const {
     addReview,
     getReviews,
     getReview,
-    getGameReviews
+    getGameReviews,
+    getActivity
 } = require('../controllers/gameController');
 const {
     getUser
@@ -72,7 +73,8 @@ router.post('/getUserActivity', async (req, res) => {
     const userId = req.body.userId;
     
     try {
-        const result = await getUserActivity(userId);
+        //const result = await getUserActivity(userId);
+        const result = await getActivity(userId);
 
         res.send(result);
     } catch (error) {

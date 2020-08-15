@@ -14,6 +14,8 @@ const User = () => {
     const [activity, setActivity] = useState(null);
     const [games, setGames] = useState(null);
     const [reviews, setReviews] = useState(null);
+    const [following, setFollowing] = useState(0);
+    const [followers, setFollowers] = useState(0);
 
     const [ended, setEnded] = useState(false);
 
@@ -31,6 +33,8 @@ const User = () => {
                 setActivity(response.activity);
                 setGames(response.games);
                 setReviews(response.reviews);
+                setFollowing(response.following);
+                setFollowers(response.followers);
                 setEnded(true);
             })
         })
@@ -45,7 +49,7 @@ const User = () => {
             <Page>
                 <Grid container direction='column' justify='space-evenly' alignItems='stretch' spacing={3}>
                     <Grid item>
-                        {ended && (<UserProfileCard user={user} />)}
+                        {ended && (<UserProfileCard user={user} following={following} followers={followers} />)}
                     </Grid>
                     <Grid item>
                         {ended && (<Link className={styles.link} to={`/u/${user._id}/activity`}><h1 className={styles.title}>Activity</h1></Link>)}

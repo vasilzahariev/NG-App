@@ -11,7 +11,8 @@ const {
     getUserGamesWithStatus,
     addReview,
     getReviews,
-    getReview
+    getReview,
+    getGameReviews
 } = require('../controllers/gameController');
 const {
     getUser
@@ -77,7 +78,7 @@ router.post('/getUserActivity', async (req, res) => {
 router.get('/g/:gameId', async (req, res) => {
     const gameId = req.params.gameId;
     const game = await getGame(gameId);
-    
+
     res.send(game);
 })
 
@@ -101,7 +102,7 @@ router.get('/getReviews', async (req, res) => {
 
 router.get('/r/:reviewId', async (req, res) => {
     const reviewId = req.params.reviewId;
-    
+
     try {
         const review = await getReview(reviewId);
         const game = await getGame(review.gameId);
@@ -118,6 +119,20 @@ router.get('/r/:reviewId', async (req, res) => {
         res.send({
             err: err.message
         })
+    }
+})
+
+router.get('/g/:gameId/reviews', async (req, res) => {
+    const gameId = req.params.gameId;
+
+    try {
+        const reviews = await getGameReviews(gameId);
+
+        res.send({ reviews });
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).send({ err: error.message });
     }
 })
 

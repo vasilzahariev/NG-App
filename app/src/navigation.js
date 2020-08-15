@@ -15,6 +15,7 @@ import UserContext from './UserContext';
 import UserGstatusGames from './pages/user-gstatus-games';
 import Reviews from './pages/reviews';
 import Review from './pages/review';
+import GameReview from './pages/game-reviews';
 
 const Navigation = () => {
     const context = useContext(UserContext);
@@ -39,6 +40,7 @@ const Navigation = () => {
             <Route path='/u/:userId/collections/:gStatus' exact component={UserGstatusGames} />
             <Route path='/reviews' component={Reviews} />
             <Route path='/r/:reviewId' exact component={Review} />
+            <Route path='/g/:gameId/reviews' exact component={GameReview} />
         </Switch>
     )
 }

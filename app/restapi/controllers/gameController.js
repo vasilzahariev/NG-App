@@ -214,6 +214,10 @@ const getReview = async (reviewId) => {
     return await GameReview.findById(reviewId);
 }
 
+const getGameReviews = async (gameId) => {
+    return await GameReview.find({ gameId });
+}
+
 module.exports = {
     addGame,
     getGames,
@@ -225,5 +229,6 @@ module.exports = {
     getUserGamesWithStatus,
     addReview,
     getReviews,
-    getReview
+    getReview,
+    getGameReviews
 }

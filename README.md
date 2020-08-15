@@ -4,7 +4,7 @@ Official Nice Games repository
 ## Table of Contents
 1. [Application Configuration](https://github.com/vasilzahariev/ReactJS-June-2020-Project#application-configurations)
 2. [Technology Stack](https://github.com/vasilzahariev/ReactJS-June-2020-Project#technology-stack)
-3. [Routing]((https://github.com/vasilzahariev/ReactJS-June-2020-Project#routing))
+3. [Routing](https://github.com/vasilzahariev/ReactJS-June-2020-Project#routing)
 4. [Data API](https://github.com/vasilzahariev/ReactJS-June-2020-Project#data-api)
 5. [Privileges](https://github.com/vasilzahariev/ReactJS-June-2020-Project#privileges)
 

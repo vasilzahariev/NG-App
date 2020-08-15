@@ -6,7 +6,7 @@ const ReviewsRenderer = (props) => {
     const renderer = useMemo(() => {
         return props.reviews.map((review, index) => {
             return (
-                <ReviewCard key={review._id} index={index} review={review} />
+                <ReviewCard key={review._id} index={index} review={review} height={props.height} />
             )
         })
     }, [props.reviews]);

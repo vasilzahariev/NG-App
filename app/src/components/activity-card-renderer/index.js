@@ -2,37 +2,30 @@ import React, { useEffect, useState } from 'react';
 import ActivityCard from '../activity-card';
 
 const ActivityCardRenderer = (props) => {
-    const [ game, setGame ] = useState(null);
-    const [ username, setUsername ] = useState(null);
+    const [game, setGame] = useState(null);
+    const [username, setUsername] = useState(null);
 
-    const getData = async () => {
-        await getGame();
-        await getUsername();
-    }
-
-    const getGame = async () => {
+    const getData = () => {
         const gameId = props.activity.gameId;
+        const userId = props.activity.userId;
 
-        const promise = await fetch(`http://localhost:9999/g/${gameId}`, {
+        fetch(`http://localhost:9999/g/${gameId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
+        }).then(promise => {
+            promise.json().then(response => {
+                setGame(response);
+
+                fetch(`http://localhost:9999/username/${userId}`).then(promise => {
+                    promise.json().then(response => {
+                        setUsername(response.username);
+                    });
+                });
+
+            });
         });
-
-        const response = await promise.json();
-
-        setGame(response);
-    }
-
-    const getUsername = async () => {
-        const userId = props.activity.userId;
-
-        const promise = await fetch(`http://localhost:9999/username/${userId}`);
-
-        const response = await promise.json();
-
-        setUsername(response.username);
     }
 
     useEffect(() => {

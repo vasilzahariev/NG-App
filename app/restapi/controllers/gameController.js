@@ -230,5 +230,6 @@ module.exports = {
     addReview,
     getReviews,
     getReview,
-    getGameReviews
+    getGameReviews,
+    getGamesWithIds
 }

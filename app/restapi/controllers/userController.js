@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const config = require('../config/config')[env];
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const GameReview = require('../models/gameReview');
 const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
@@ -116,9 +117,14 @@ const getUser = async (userId) => {
     return await User.findById(userId);
 }
 
+const getUserReviews = async (userId) => {
+    return await GameReview.find({ userId });
+}
+
 module.exports = {
     register,
     login,
     verifyToken,
-    getUser
+    getUser,
+    getUserReviews
 }

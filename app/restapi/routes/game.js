@@ -8,8 +8,15 @@ const {
     getGameStatus,
     getAllUserStatuses,
     getUserActivity,
-    getUserGamesWithStatus
+    getUserGamesWithStatus,
+    addReview,
+    getReviews,
+    getReview,
+    getGameReviews
 } = require('../controllers/gameController');
+const {
+    getUser
+} = require('../controllers/userController');
 
 router.post('/addGame', async (req, res) => {
     const result = await addGame(req, res);
@@ -71,7 +78,7 @@ router.post('/getUserActivity', async (req, res) => {
 router.get('/g/:gameId', async (req, res) => {
     const gameId = req.params.gameId;
     const game = await getGame(gameId);
-    
+
     res.send(game);
 })
 
@@ -79,6 +86,54 @@ router.post('/userGamesWithStatus', async (req, res) => {
     const result = await getUserGamesWithStatus(req, res);
 
     res.send({ games: result })
+})
+
+router.post('/addReview', async (req, res) => {
+    const result = await addReview(req, res);
+
+    res.send(result)
+})
+
+router.get('/getReviews', async (req, res) => {
+    const result = await getReviews();
+
+    res.send({ reviews: result });
+})
+
+router.get('/r/:reviewId', async (req, res) => {
+    const reviewId = req.params.reviewId;
+
+    try {
+        const review = await getReview(reviewId);
+        const game = await getGame(review.gameId);
+        const username = await (await getUser(review.userId)).username;
+
+        res.send({
+            review,
+            game,
+            username
+        })
+    } catch (err) {
+        console.log(err.message);
+
+        res.send({
+            err: err.message
+        })
+    }
+})
+
+router.get('/g/:gameId/reviews', async (req, res) => {
+    const gameId = req.params.gameId;
+
+    try {
+        const reviews = await getGameReviews(gameId);
+
+        res.send({ reviews });
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).send({ err: error.message });
+    }
 })
 
 module.exports = router;

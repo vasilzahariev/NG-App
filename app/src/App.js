@@ -13,7 +13,8 @@ const App = (props) => {
     }
 
     const logout = () => {
-        document.cookie = `aid=;expires=${new Date().toUTCString()}`;
+        document.cookie = `aid=;expires=Thu, 01 Jan 1970 00:00:00 UTC`;
+        console.log(document.cookie)
 
         setUser({
             loggedIn: false

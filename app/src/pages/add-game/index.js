@@ -52,10 +52,7 @@ const AddGame = () => {
 
         if (val.length < 1) {
             setDescriptionErr(`Game's description should be at least 1 character long`);
-        } else if (val.includes('"')) {
-            setDescriptionErr(`Game's description should not contain quotes ("")`)
-        }
-        else {
+        } else {
             setDescriptionErr('');
         }
     }

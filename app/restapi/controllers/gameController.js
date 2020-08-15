@@ -2,7 +2,9 @@ const Game = require('../models/game');
 const Activity = require('../models/activity');
 const GameStatus = require('../models/gameStatus');
 const GameReview = require('../models/gameReview');
+const Following = require('../models/following');
 const { cloudinary } = require('../utils/cloudinary');
+
 
 const addGame = async (req, res) => {
     const {
@@ -218,6 +220,21 @@ const getGameReviews = async (gameId) => {
     return await GameReview.find({ gameId });
 }
 
+const getFollowingIds = async (userId) => {
+    return await (await Following.find({ userId })).map(f => f.followsId);
+}
+
+const getActivity = async (userId) => {
+    const followingIds = await getFollowingIds(userId);
+
+    return await Activity.find({
+        $or: [
+            {userId: userId},
+            {userId: followingIds}
+        ]
+    })
+}
+
 module.exports = {
     addGame,
     getGames,
@@ -231,5 +248,7 @@ module.exports = {
     getReviews,
     getReview,
     getGameReviews,
-    getGamesWithIds
+    getGamesWithIds,
+    getFollowingIds,
+    getActivity
 }

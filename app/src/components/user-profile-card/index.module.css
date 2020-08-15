@@ -16,3 +16,24 @@
     font-size: 25px;
     text-decoration: none;
 }
+
+.btn {
+    background: transparent;
+    border: 1px solid rgb(48, 202, 48);
+    border-radius: 15px;
+    padding: 7px 15px;
+}
+
+.btn:hover{
+    background-color: rgb(48, 202, 48);
+    transition: all .5s; 
+}
+
+.followInfo {
+    font-size: 20px;
+}
+
+.followInfo:hover {
+    background-color: rgba(255, 255, 255, 0.164);
+    border-radius: 10px;
+}

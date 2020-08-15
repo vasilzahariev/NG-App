@@ -20,7 +20,6 @@ const ReviewForm = (props) => {
         setReview(val);
 
         if (val.length < 1) setReviewErr('The review should be at least 1 character long');
-        else if (val.includes('"')) setReviewErr(`The review shouldn't have quotes("")`);
         else setReviewErr('');
     }
 

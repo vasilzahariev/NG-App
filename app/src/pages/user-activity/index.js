@@ -50,7 +50,7 @@ const UserActivity = () => {
         <Layout>
             <Page>
                 <div>
-                    {ended && <Title><Link to={`/u/${params.userId}`}>{username}</Link>'s activity</Title>}
+                    {ended && <Title><Link to={`/u/${params.userId}`}>{username}</Link>'s Activity</Title>}
                     <Grid container direction='row' justify='space-evenly' alignItems='flex-start' >
                         <Grid item xs={2}></Grid>
                         <Grid item xs={6}>

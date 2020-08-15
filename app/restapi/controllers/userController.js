@@ -5,6 +5,7 @@ const config = require('../config/config')[env];
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const GameReview = require('../models/gameReview');
+const Following = require('../models/following');
 const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
@@ -121,10 +122,71 @@ const getUserReviews = async (userId) => {
     return await GameReview.find({ userId });
 }
 
+const follow = async (req, res) => {
+    const {
+        userId,
+        followsId
+    } = req.body;
+
+    try {
+        const following = new Following({
+            userId,
+            followsId
+        });
+
+        await following.save();
+
+        return {};
+    } catch (error) {
+        console.log(error);
+
+        return {error};
+    }
+}
+
+const isFollowing = async (req, res) => {
+    const {
+        userId,
+        followsId
+    } = req.body;
+
+    return await Following.find({ userId, followsId });
+}
+
+const unfollow = async (req, res) => {
+    const {
+        userId,
+        followsId
+    } = req.body;
+
+    try {
+        await Following.findOneAndDelete({ userId, followsId });
+
+        return {};
+    } catch (error) {
+        console.log(error.message);
+
+        return { error };
+    }
+}
+
+const getFollowingCount = async (userId) => {
+    return await (await Following.find({ userId })).length;
+}
+
+const getFollowersCount = async (userId) => {
+    return await (await Following.find({ followsId: userId })).length;
+}
+
 module.exports = {
     register,
     login,
     verifyToken,
     getUser,
-    getUserReviews
+    getUserReviews,
+    follow,
+    isFollowing,
+    unfollow,
+    getFollowingCount,
+    getFollowersCount
 }

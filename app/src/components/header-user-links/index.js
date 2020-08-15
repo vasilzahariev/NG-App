@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useHistory, Redirect } from 'react-router-dom';
 import HeaderLink from '../header-link';
 import styles from './index.module.css'
 import UserContext from '../../UserContext';

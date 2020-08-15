@@ -38,7 +38,7 @@ const User = () => {
 
     useEffect(() => {
         getData();
-    }, [])
+    }, [params])
 
     return (
         <Layout>

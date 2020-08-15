@@ -58,45 +58,45 @@ I've placed all the neccecery enviroment variables in the restapi (althogh I sho
 ## Data API
 
 ##### User
-> **_id**: User id (unique)
-> **username**: User's username (unique)
-> **email**: User's email (unique)
-> **fullName**: User's full name
-> **password**: User's password (hashed)
+> - **_id**: User id (unique)
+> - **username**: User's username (unique)
+> - **email**: User's email (unique)
+> - **fullName**: User's full name
+> - **password**: User's password (hashed)
 
 ##### Game
 
-> **_id**: Game id (unique)
-> **name**: Game's name (unique)
-> **description**: Description for the game
-> **posterUrl**: Url for the poster of the game
-> **trailerUrl**: Url for the trailer of the game
+> - **_id**: Game id (unique)
+> - **name**: Game's name (unique)
+> - **description**: Description for the game
+> - **posterUrl**: Url for the poster of the game
+> - **trailerUrl**: Url for the trailer of the game
 
 ##### GameStatus
-> **_id**: GameStatus id (unique)
-> **userId**: Id for the user who is interacting with a game
-> **gameId**: Id for the game that is being interacted with
-> **status**: Status (number) representing one of the collections: Want to Play, Playing, Finished, Abandoned
+> - **_id**: GameStatus id (unique)
+> - **userId**: Id for the user who is interacting with a game
+> - **gameId**: Id for the game that is being interacted with
+> - **status**: Status (number) representing one of the collections: Want to Play, Playing, Finished, Abandoned
 
 ##### Activity
-> **_id**: Activity id (unique)
-> **userId**: Id for the use who is interacting with the game
-> **gameId**: Id for the game that is being interacted with
-> **status**: Status (number) representing one of the collections: Want to Play, Playing, Finished, Abandoned
-> **message**: The message of the activity
-> **date**: The date the activity happened
+> - **_id**: Activity id (unique)
+> - **userId**: Id for the use who is interacting with the game
+> - **gameId**: Id for the game that is being interacted with
+> - **status**: Status (number) representing one of the collections: Want to Play, Playing, Finished, Abandoned
+> - **message**: The message of the activity
+> - **date**: The date the activity happened
 
 ##### GameReivew
-> **_id**: Game reivew id (unique)
-> **review**: The review (text) itself
-> **userId**: The author of the review
-> **gameId**: The subject of the review
-> **score**: The score for the game
+> - **_id**: Game reivew id (unique)
+> - **review**: The review (text) itself
+> - **userId**: The author of the review
+> - **gameId**: The subject of the review
+> - **score**: The score for the game
 
 ##### Following
-> **_id**: Following id (unique)
-> **userId**: The follower's id
-> **followsId**: The one who is being followed
+> - **_id**: Following id (unique)
+> - **userId**: The follower's id
+> - **followsId**: The one who is being followed
 
 # Privileges
 

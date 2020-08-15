@@ -1,0 +1,24 @@
+.link {
+    display: block;
+    text-decoration: none;
+    color: #61dafb;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.link:hover {
+    color: #067d9e;
+    transition: all .5s;
+}
+
+.noSave {
+    border: 1px solid rgb(48, 202, 48);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    padding: 5px 10px;
+    background: transparent;
+}
+
+.noSaveDiv {
+    margin: 10px 0px 15px 0px;
+}

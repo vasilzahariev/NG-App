@@ -10,7 +10,8 @@ const {
     isFollowing,
     unfollow,
     getFollowersCount,
-    getFollowingCount
+    getFollowingCount,
+    getUsers
 } = require('../controllers/userController');
 const {
     getUserActivity,
@@ -116,6 +117,15 @@ router.post('/unfollow', async (req, res) => {
     const result = await unfollow(req, res);
     
     res.send(result);
+})
+
+router.get('/getUsers/:searchVal', async (req, res) => {
+    const search = req.params.searchVal;
+    const users = await (await getUsers()).filter(u => {
+        if (u.username.toLowerCase().includes(search.toLowerCase())) return u;
+    });
+
+    res.send({users})
 })
 
 module.exports = router;

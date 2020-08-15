@@ -1,37 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styles from './index.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-class Search extends Component {
-    constructor(props) {
-        super(props);
+const Search = () => {
+    const [searchVal, setSearchVal] = useState('');
+    const history = useHistory();
 
-        this.state = {
-            searchVal: ''
-        }
+    const onSearchValueChange = (event) => {
+        setSearchVal(event.target.value);
     }
 
-    onSearchValueChange = (event) => {
-        this.setState({
-            searchVal: event.target.value
-        });
-    }
-
-    submitHandler = (event) => {
+    const submitHandler = (event) => {
         event.preventDefault();
 
-        console.log(this.state.searchVal);
+        if (!searchVal) return;
+
+        history.push(`/search/${searchVal}`);
     }
 
-    render() {
-        return (
-            <div className={styles.searchDiv} >
-                <form onSubmit={this.submitHandler}>
-                    <input className={styles.searchField} type='text' onChange={this.onSearchValueChange} placeholder='Search' />
-                    <input className={styles.searchSubmit} type='submit' value='?' />
-                </form>
-            </div>
-        );
-    }
+
+    return (
+        <div className={styles.searchDiv} >
+            <form onSubmit={submitHandler}>
+                <input className={styles.searchField} type='text' onChange={onSearchValueChange} placeholder='Search' />
+                <button className={styles.searchSubmit} type='submit'>{<FontAwesomeIcon icon={faSearch} />}</button>
+            </form>
+        </div>
+    );
 }
 
 export default Search;

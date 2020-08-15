@@ -1,0 +1,14 @@
+.list {
+    list-style-type: none;
+    text-align: left;
+}
+
+.link {
+    font-size: 40px;
+    text-decoration: none;
+}
+
+.link:hover {
+    color: rgb(206, 53, 206);
+    transition: all .5s;
+}

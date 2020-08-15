@@ -1,0 +1,36 @@
+.btns {
+    margin: 3% 0;
+}
+
+.btn {
+    background: transparent;
+    border: 1px solid rgb(48, 202, 48);
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 15px;
+    margin: 0 50px;
+}
+
+.btn:hover {
+    background-color: rgb(48, 202, 48);
+    transition: all .5s;
+}
+
+.btnSelected {
+    border: 1px solid rgb(206, 53, 206);
+}
+
+.btnSelected:hover {
+    background-color: rgb(206, 53, 206);
+    transition: all .5s;
+}
+
+.search {
+    font-weight: bolder;
+    color: rgb(206, 53, 206);
+}
+
+.p {
+    text-align: left;
+    font-size: 30px;
+}

@@ -8,52 +8,49 @@ import { getStatus, getStatusName } from '../../utils/status';
 import GstatusGamesRenderer from '../../components/gstatus-games-renderer';
 
 const UserGstatusGames = () => {
-    const [ statusName, setStatusName ] = useState('');
-    const [ username, setUsername ] = useState('');
-    const [ games, setGames ] = useState([]);
-    const [ ended, setEnded ] = useState(false);
-    
+    const [statusName, setStatusName] = useState('');
+    const [username, setUsername] = useState('');
+    const [games, setGames] = useState([]);
+    const [ended, setEnded] = useState(false);
+
     const params = useParams();
     const history = useHistory();
 
-    const getData = async (status) => {
+    const getData = (status) => {
         const userId = params.userId;
 
-        await getUsername(userId);
+        fetch(`http://localhost:9999/username/${userId}`).then(promise => {
+            promise.json().then(response => {
+                if (!response.username) { history.push('/404'); return; }
 
-        const promise = await fetch('http://localhost:9999/userGamesWithStatus', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                userId,
-                status
-            })
+                setUsername(response.username);
+
+                fetch('http://localhost:9999/userGamesWithStatus', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        userId,
+                        status
+                    })
+                }).then(promise => {
+                    promise.json().then(response => {
+                        setGames(response.games.reverse());
+                        setEnded(true);
+                    });
+                });
+            });
         });
-
-        const response = await promise.json();
-
-        setGames(response.games.reverse());
-        setEnded(true);
-    }
-
-    const getUsername = async (userId) => {
-        const promise = await fetch(`http://localhost:9999/username/${userId}`);
-        const response = await promise.json();
-
-        if (!response.username) { history.push('/404'); return; }
-
-        setUsername(response.username);
     }
 
     useEffect(() => {
         const status = getStatus(params.gStatus);
 
         if (status === -1) { history.push('/404'); return; }
-        
+
         setStatusName(getStatusName(status));
-        
+
         getData(status);
 
     }, [])
@@ -61,8 +58,8 @@ const UserGstatusGames = () => {
     return (
         <Layout>
             <Page>
-                { username ? <Title><Link to={`/u/${params.userId}`}>{username}</Link>'s {statusName}</Title> : <Title>Receving commander's name...</Title>}
-                { !ended ? <Title>Receiving coordinates for the mission...</Title> : ( ended && games.length === 0 ? <p>No games! :{'('} </p> : <GstatusGamesRenderer games={games} />)}
+                {username ? <Title><Link to={`/u/${params.userId}`}>{username}</Link>'s {statusName}</Title> : <Title>Receving commander's name...</Title>}
+                {!ended ? <Title>Receiving coordinates for the mission...</Title> : (ended && games.length === 0 ? <p>No games! :{'('} </p> : <GstatusGamesRenderer games={games} />)}
             </Page>
         </Layout>
     )

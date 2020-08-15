@@ -11,10 +11,10 @@ const HomeUser = () => {
     const [activities, setActivities] = useState([]);
     const [ended, setEnded] = useState(false);
 
-    const getData = async () => {
+    const getData = () => {
         const userId = context.user._id;
 
-        const promise = await fetch(`http://localhost:9999/getUserActivity`, {
+        fetch(`http://localhost:9999/getUserActivity`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,12 +22,13 @@ const HomeUser = () => {
             body: JSON.stringify({
                 userId
             })
+        }).then(promise => {
+            promise.json().then(response => {
+                setActivities(response.reverse());
+                setEnded(true);
+            });
         });
 
-        const response = await promise.json();
-
-        setActivities(response.reverse());
-        setEnded(true);
     }
 
     useEffect(() => {
@@ -42,17 +43,3 @@ const HomeUser = () => {
 }
 
 export default HomeUser;
-
-
-/*
-<Grid container direction="row" justify="space-evenly" alignItems="center">
-                <Grid item xs={4}>
-                    <Title>Hello there, <span className={styles.epicGamer}>{context.user.username}</span>!</Title>
-                </Grid>
-                <Grid item xs={4}>
-                    {(ended && activities.length === 0) ? <p>No games! :(</p> : <ActivitiesRenderer activities={activities} />}
-                </Grid>
-                <Grid item xs={4}>
-                </Grid>
-            </Grid>
-*/

@@ -1,0 +1,13 @@
+.title {
+    margin-bottom: 2%;
+    margin-left: 1%;
+    text-align: left;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

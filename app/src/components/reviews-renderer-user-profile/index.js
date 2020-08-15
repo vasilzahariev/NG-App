@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import Grid from '@material-ui/core/Grid';
-import ReviewCard from '../review-card';
+import ReviewCardUserProfile from '../review-card-user-profile';
 
-const ReviewsRenderer = (props) => {
+const ReviewsRendererUserProfile = (props) => {
     const renderer = useMemo(() => {
         return props.reviews.map((review, index) => {
             return (
-                <ReviewCard key={review._id} index={index} review={review} height={props.height} />
+                <ReviewCardUserProfile key={review._id} index={index} review={review} />
             )
         })
     }, [props.reviews]);
@@ -18,4 +18,4 @@ const ReviewsRenderer = (props) => {
     )
 }
 
-export default ReviewsRenderer;
+export default ReviewsRendererUserProfile;

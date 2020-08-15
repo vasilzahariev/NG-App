@@ -17,10 +17,10 @@ const Game = () => {
     const history = useHistory();
     const context = useContext(UserContext);
 
-    const getData = async () => {
+    const getData = () => {
         const id = params.gameId;
 
-        const promise = await fetch(`http://localhost:9999/getGame`, {
+        fetch(`http://localhost:9999/getGame`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -29,19 +29,21 @@ const Game = () => {
                 gameId: id,
                 userId: (context.user && context.user.loggedIn ? context.user._id : '')
             })
+        }).then(promise => {
+            if (!promise.ok) {
+                history.push('/404');
+            } else {
+                promise.json().then(response => {
+                    const game = response.game;
+                    const status = response.status;
+        
+                    setGame(game);
+                    setStatus(status);
+                });
+    
+            }
         });
 
-        if (!promise.ok) {
-            history.push('/404');
-        } else {
-            const response = await promise.json();
-
-            const game = response.game;
-            const status = response.status;
-
-            setGame(game);
-            setStatus(status);
-        }
     }
 
     useEffect(() => {

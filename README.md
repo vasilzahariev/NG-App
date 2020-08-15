@@ -13,20 +13,20 @@ Official Nice Games repository
 To run the application, follow these steps:
 1. Clone the repository to your machine
 2. Open the repository folder
-3. Once inside hold Shift while right clicking with the mouse
+3. Once inside hold Shift while right-clicking with the mouse
 4. Enter the app folder
 5. Choose "Open PowerShell / command window here"
 6. Type "yarn install", hit Enter and minimize the console 
 7. Enter the restapi folder
-8. Once inside hold Shift while right clicking with the mouse
+8. Once inside hold Shift while right-clicking with the mouse
 9. Choose "Open PowerShell / command window here"
 10. Type "yarn install" and hit Enter
-11. Once it's ready type "yarn start" and hit Enter
+11. Once it's ready, type "yarn start" and hit Enter
 12. Maximize the other console window, type "yarn start" and hit Enter
 13. A window in your default browser should pop up (if it doesn't open a browser and type "localhost:3000" in the search bar)
 14. The application now should be up and running
 
-I've placed all the neccecery enviroment variables in the restapi (althogh I shouldn't).
+I've placed all the necessary environment variables in the restapi (although I shouldn't).
 
 ## Technology Stack
 
@@ -44,7 +44,7 @@ I've placed all the neccecery enviroment variables in the restapi (althogh I sho
 | /regitser | Register Page | Only for Guests |
 | /login | Login Page | Only for Guests |
 | /games | Games Page (All Games)  | All |
-| /adming/g/add | Add a Game Page  | Admins |
+| /admin/g/add | Add a Game Page  | Admins |
 | /admin/g/edit | Edit a Game Page  | Admins |
 | /g/:gameId | Game Page with a specific id (Users have more options) | All |
 | /g/:gameId/reviews | Reviews for a Game with specific id | All |
@@ -68,7 +68,7 @@ I've placed all the neccecery enviroment variables in the restapi (althogh I sho
 
 > - **_id**: Game id (unique)
 > - **name**: Game's name (unique)
-> - **description**: Description for the game
+> - **description**: Description of the game
 > - **posterUrl**: Url for the poster of the game
 > - **trailerUrl**: Url for the trailer of the game
 
@@ -80,7 +80,7 @@ I've placed all the neccecery enviroment variables in the restapi (althogh I sho
 
 ##### Activity
 > - **_id**: Activity id (unique)
-> - **userId**: Id for the use who is interacting with the game
+> - **userId**: Id for the user who is interacting with the game
 > - **gameId**: Id for the game that is being interacted with
 > - **status**: Status (number) representing one of the collections: Want to Play, Playing, Finished, Abandoned
 > - **message**: The message of the activity
@@ -111,5 +111,7 @@ Users can:
 - Follow other users
 
 Admins can:
-- Craete games
+- Create games
 - Edit games
+
+

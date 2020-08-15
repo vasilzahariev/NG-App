@@ -9,7 +9,8 @@ import HomeUser from './pages/home-user';
 import Register from './pages/register/';
 import Login from './pages/login';
 import Games from './pages/games';
-import AddGame from './pages/add-game'
+import AddGame from './pages/add-game';
+import EditGame from './pages/edit-game';
 import Game from './pages/game';
 import UserContext from './UserContext';
 import UserGstatusGames from './pages/user-gstatus-games';
@@ -38,7 +39,10 @@ const Navigation = () => {
             </Route>
             <Route path='/games' component={Games} />
             <Route path='/admin/g/add'>
-                {loggedIn ? (<AddGame />) : (<Redirect to='/' />)}
+                {loggedIn && context.user.isAdmin ? (<AddGame />) : (<Redirect to='/' />)}
+            </Route>
+            <Route path='/admin/g/edit/:gameId'>
+                {loggedIn && context.user.isAdmin ? (<EditGame />) : (<Redirect to='/' />)}
             </Route>
             <Route path='/g/:gameId' exact component={Game} />
             <Route path='/u/:userId/collections/:gStatus' exact component={UserGstatusGames} />

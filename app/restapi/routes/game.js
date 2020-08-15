@@ -13,7 +13,8 @@ const {
     getReviews,
     getReview,
     getGameReviews,
-    getActivity
+    getActivity,
+    editGame
 } = require('../controllers/gameController');
 const {
     getUser
@@ -71,22 +72,31 @@ router.post('/addActivity/:gameId', async (req, res) => {
 
 router.post('/getUserActivity', async (req, res) => {
     const userId = req.body.userId;
-    
+
     try {
         //const result = await getUserActivity(userId);
         const result = await getActivity(userId);
 
         res.send(result);
     } catch (error) {
-        res.send({err: error.message})
+        res.send({ err: error.message })
     }
 })
 
 router.get('/g/:gameId', async (req, res) => {
     const gameId = req.params.gameId;
-    const game = await getGame(gameId);
 
-    res.send(game);
+    try {
+        const game = await getGame(gameId);
+
+        res.send(game);
+    } catch (err) {
+        console.log(err);
+
+        res.send({
+            error: err.message
+        })
+    }
 })
 
 router.post('/userGamesWithStatus', async (req, res) => {
@@ -158,6 +168,12 @@ router.get('/getGames/:search', async (req, res) => {
     //console.log(games);
 
     res.send({games});
+});
+
+router.post('/editGame', async (req, res) => {
+    const result = await editGame(req, res);
+
+    res.send(result);
 })
 
 module.exports = router;

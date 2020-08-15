@@ -45,6 +45,47 @@ const addGame = async (req, res) => {
     }
 }
 
+const editGame = async (req, res) => {
+    const {
+        name,
+        description,
+        posterFile,
+        trailerUrl,
+        game
+    } = req.body;
+
+    console.log(posterFile);
+
+    const shouldUploadPoster = posterFile !== game.posterUrl;
+    const posterUrl = shouldUploadPoster ? await uploadPoster(posterFile) : game.posterUrl;
+
+    if (!posterUrl) return { error: 'An error occurred while uploading the image' };
+
+    try {
+        await Game.findByIdAndUpdate(game._id, {
+            name,
+            description,
+            posterUrl,
+            trailerUrl
+        });
+
+        return {
+            success: true,
+            _id: game._id
+        };
+    } catch (err) {
+        if (err.message.includes('E11000') && err.message.includes('name')) {
+            return {
+                error: 'There is already a game with this name'
+            }
+        }
+
+        return {
+            error: err.message
+        }
+    }
+}
+
 const uploadPoster = async (file) => {
     try {
         const uploadedResponse = await cloudinary.uploader.upload(file, {
@@ -201,10 +242,10 @@ const addReview = async (req, res) => {
         const reviewObj = await gameReview.save();
 
         return { reviewId: reviewObj._id };
-    } catch(err) {
+    } catch (err) {
         console.log(err.message);
 
-        return {err: err.message};
+        return { err: err.message };
     }
 }
 
@@ -229,8 +270,8 @@ const getActivity = async (userId) => {
 
     return await Activity.find({
         $or: [
-            {userId: userId},
-            {userId: followingIds}
+            { userId: userId },
+            { userId: followingIds }
         ]
     })
 }
@@ -250,5 +291,6 @@ module.exports = {
     getGameReviews,
     getGamesWithIds,
     getFollowingIds,
-    getActivity
+    getActivity,
+    editGame
 }

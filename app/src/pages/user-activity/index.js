@@ -30,7 +30,7 @@ const UserActivity = () => {
 
         const response = await promise.json();
 
-        if (response.err) { history.push('/404'); return; }
+        if (response.err) { history.replace('/404'); return; }
 
         setActivities(response.reverse());
 

@@ -27,7 +27,7 @@ const User = () => {
 
         fetch(`http://localhost:9999/u/${userId}`).then(promise => {
             promise.json().then(response => {
-                if (response.err) { history.push('/404'); return; }
+                if (response.err) { history.replace('/404'); return; }
 
                 setUser(response.user);
                 setActivity(response.activity);

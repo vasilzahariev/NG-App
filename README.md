@@ -114,4 +114,7 @@ Admins can:
 - Create games
 - Edit games
 
+# Accounts
 
+- **admin**: Admin123
+- **user**: User123

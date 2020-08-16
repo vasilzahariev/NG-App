@@ -7,6 +7,7 @@ Official Nice Games repository
 3. [Routing](https://github.com/vasilzahariev/ReactJS-June-2020-Project#routing)
 4. [Data API](https://github.com/vasilzahariev/ReactJS-June-2020-Project#data-api)
 5. [Privileges](https://github.com/vasilzahariev/ReactJS-June-2020-Project#privileges)
+5. [Accounts](https://github.com/vasilzahariev/ReactJS-June-2020-Project#accounts)
 
 ## Application Configuration
 
@@ -114,4 +115,7 @@ Admins can:
 - Create games
 - Edit games
 
+# Accounts
 
+- **admin**: Admin123
+- **user**: User123

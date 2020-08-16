@@ -54,8 +54,6 @@ const editGame = async (req, res) => {
         game
     } = req.body;
 
-    console.log(posterFile);
-
     const shouldUploadPoster = posterFile !== game.posterUrl;
     const posterUrl = shouldUploadPoster ? await uploadPoster(posterFile) : game.posterUrl;
 

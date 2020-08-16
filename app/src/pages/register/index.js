@@ -98,8 +98,6 @@ const Register = () => {
 
         if (!checkIfCanSubmit()) return;
 
-        console.log('test');
-
         const promise = await fetch('http://localhost:9999/register', {
             method: 'POST',
             headers: {

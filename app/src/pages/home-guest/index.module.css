@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+.signUpText {
+    margin-bottom: 2%;
+}
+
 .signUpLink {
     display: block;
     text-decoration: none;

@@ -147,7 +147,7 @@ const EditGame = () => {
         const response = await promise.json();
 
         if (response.error) {
-            history.push('/404');
+            history.replace('/404');
             
             return;
         }

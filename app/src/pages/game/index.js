@@ -31,7 +31,7 @@ const Game = () => {
             })
         }).then(promise => {
             if (!promise.ok) {
-                history.push('/404');
+                history.replace('/404');
             } else {
                 promise.json().then(response => {
                     const game = response.game;

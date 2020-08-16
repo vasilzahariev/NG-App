@@ -19,7 +19,7 @@ const UserReviews = () => {
 
         fetch(`http://localhost:9999/u/${userId}/reviews`).then(promise => {
             promise.json().then(response => {
-                if (response.err) { history.push('/404'); return; }
+                if (response.err) { history.replace('/404'); return; }
 
                 setUsername(response.username);
                 setReviews(response.reviews.reverse());

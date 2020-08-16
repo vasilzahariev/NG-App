@@ -18,7 +18,7 @@ const GameReview = () => {
         const gameId = params.gameId;
 
         fetch(`http://localhost:9999/g/${gameId}/reviews`).then(promise => {
-            if (!promise.ok) { history.push('/404'); return; }
+            if (!promise.ok) { history.replace('/404'); return; }
 
             promise.json().then(response => {
                 fetch(`http://localhost:9999/g/${gameId}`).then(promise => {

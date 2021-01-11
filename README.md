@@ -32,9 +32,8 @@ I've placed all the necessary environment variables in the restapi (although I s
 ## Technology Stack
 
 - React
-- Material-UI (Grid)
-- react-router
-- REST API (Node.js)
+- Material-UI
+- REST API (Node.js / Express.js)
 
 ## Routing
 
